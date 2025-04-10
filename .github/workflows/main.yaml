@@ -22,18 +22,10 @@ jobs:
           NODE_OPTIONS: '--max_old_space_size=4096'
         run: npm run build
       - name: Upload artifact
-        uses: actions/upload-artifact@v4.6.2
+        uses: actions/upload-pages-artifact@v2
         with:
-          name: preview
+          name: cinny_build
           path: dist
-          retention-days: 1
-      - name: Save pr number
-        run: echo ${PR_NUMBER} > ./pr.txt
-      - name: Upload pr number
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: pr
-          path: ./pr.txt
           retention-days: 1
 
   deploy-coverage:
