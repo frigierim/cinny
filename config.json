@@ -1,0 +1,21 @@
+{
+  "defaultHomeserver": 0,
+  "homeserverList": [
+    "chat.oddmode.com"
+  ],
+  "allowCustomHomeservers": true,
+
+  "featuredCommunities": {
+    "openAsDefault": false,
+    "spaces": [
+    ],
+    "rooms": [
+    ],
+    "servers": ["chat.oddmode.com"]
+  },
+
+  "hashRouter": {
+    "enabled": false,
+    "basename": "/"
+  }
+}
