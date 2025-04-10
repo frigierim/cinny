@@ -22,27 +22,19 @@ jobs:
           NODE_OPTIONS: '--max_old_space_size=4096'
         run: npm run build
       - name: Upload artifact
+        id: deployment
         uses: actions/upload-pages-artifact@v2
         with:
-          name: cinny_build
           path: dist
           retention-days: 1
 
-  deploy-coverage:
-    if: github.ref == 'refs/heads/dev'
-    runs-on: ubuntu-latest
-    needs: build-pull-request
-    
-    permissions:
-      pages: write
-      id-token: write
-
+  deploy:
     environment:
-      # environment created automatically by GitHub
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
+    runs-on: ubuntu-latest
+    needs: build-pull-request
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
